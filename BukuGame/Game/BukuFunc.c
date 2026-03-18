@@ -116,8 +116,16 @@ int pingar(Tabuleiro *tab, int tam, Pilha *jogadas, Pilha *mao) {
     if(tamanhoP(mao) == 0) return 0;
     int l = 0, c = 0;
     char caminho;
-    printf("Escolha a posicao inicial que voce quer pingar (x y): ");
-    scanf("%d %d", &l, &c);
+    printf("Escolha a posicao inicial que voce quer pingar (x, ENTER, y): ");
+    while(scanf("\n%d\n", &l) != 1 || l < 1 || l > tam) {
+            printf("Linha invalida, por favor, digite novamente: ");
+            while(getchar() != '\n');
+        }
+    while(scanf("%d", &c) != 1 || c < 1 || c > tam) {
+            printf("Coluna invalida, por favor, digite novamente: ");
+            while(getchar() != '\n');
+        }
+
     printf("\n");
 
     while(l <= 0 || c <= 0 || l > tam || c > tam) {
@@ -175,35 +183,35 @@ int pingar(Tabuleiro *tab, int tam, Pilha *jogadas, Pilha *mao) {
 
         if(Norte == 1 && Sul == 1 && Oeste == 1 && Leste == 1) {
             printf("Voce chegou num beco sem saida, refaca suas jogadas do começo!\n");
-            int save = tamanhoP(mao) + tamanhoP(jogadas);
+            int save = tamanhoP(jogadas);
             desfazJogada(tab, tam, jogadas);
             return save;
         }
 
         if(Norte == 1 && Oeste == 1 && l+1 == tam && c+1 == tam) {
             printf("Voce chegou num beco sem saida, refaca suas jogadas do começo!\n");
-            int save = tamanhoP(mao) + tamanhoP(jogadas);
+            int save = tamanhoP(jogadas);
             desfazJogada(tab, tam, jogadas);
             return save;
         }
 
         if(Norte == 1 && Leste == 1 && l+1 == tam && c-1 == -1) {
             printf("Voce chegou num beco sem saida, refaca suas jogadas do começo!\n");
-            int save = tamanhoP(mao) + tamanhoP(jogadas);
+            int save = tamanhoP(jogadas);
             desfazJogada(tab, tam, jogadas);
             return save;
         }
 
         if(Sul == 1 && Leste == 1 && l-1 == -1 && c-1 == -1) {
             printf("Voce chegou num beco sem saida, refaca suas jogadas do começo!\n");
-            int save = tamanhoP(mao) + tamanhoP(jogadas);
+            int save = tamanhoP(jogadas);
             desfazJogada(tab, tam, jogadas);
             return save;
         }
 
         if(Sul == 1 && Oeste == 1 && l-1 == -1 && c+1 == tam) {
             printf("Voce chegou num beco sem saida, refaca suas jogadas do começo!\n");
-            int save = tamanhoP(mao) + tamanhoP(jogadas);
+            int save = tamanhoP(jogadas);
             desfazJogada(tab, tam, jogadas);
             return save;
         }
