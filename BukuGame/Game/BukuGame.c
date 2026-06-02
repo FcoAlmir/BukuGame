@@ -51,7 +51,7 @@ int main() {
             pontuacaoVerificacao(tab, tam, pontBrancas, pontPretas);
         }
          else { //REFAZ O PINGO
-            while(flag != 1 || flag != 0) {
+            while(flag != 1 && flag != 0) {
                 for(int j = 0 ; j < flag ; j++) {
                     push(mao);
                 }
@@ -97,7 +97,7 @@ int main() {
                 pontuacaoVerificacao(tab, tam, pontBrancas, pontPretas);
             }
             else { //REFAZ O PINGO
-                while(flag != 1 || flag != 0) {
+                while(flag != 1 && flag != 0) {
                 for(int j = 0 ; j < flag ; j++) {
                     push(mao);
                 }
@@ -138,7 +138,7 @@ int main() {
                 pontuacaoVerificacao(tab, tam, pontBrancas, pontPretas);
             }
             else { //REFAZ O PINGO
-                while(flag != 1 || flag != 0) {
+                while(flag != 1 && flag != 0) {
                 for(int j = 0 ; j < flag ; j++) {
                     push(mao);
                 }
